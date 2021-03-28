@@ -1,15 +1,29 @@
 import Layout from '../../components/layout'
 import {getAllPostIds, getPostData} from '../../lib/post'
+import Head from 'next/head'
+import Date from '../../components/date'
+import utilstyles from '../../styles/utils.module.css'
+
 
 export default function Post({postData}){
     return (
         <Layout>
-            <h3>{postData.title}</h3>
-            <p>{postData.id}</p>
-            <p>{postData.date}</p>
+            <Head>
+                <title>{postData.title}</title>
+            </Head>
+            <article>
+            <h1 className={utilstyles.headingXl}>{postData.title}</h1>
+            <div className={utilstyles.lightText}>
+            <Date dateString={postData.date}/>
+
+            </div>
+            
+            <br/>
             <div dangerouslySetInnerHTML={{__html:postData.contentHtml}}>
              
             </div>
+            </article>
+        
         </Layout>
     )
 }

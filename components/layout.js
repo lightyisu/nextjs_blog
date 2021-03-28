@@ -21,14 +21,14 @@ export default function Layout({children,home}){
                     home?(
                         <>
                         <Image priority src='/images/profile.png' className={utilStyles.borderCircle}
-                            height={80} width={80} alt={name}/>
+                            height={60} width={60} alt={name}/>
                         <h1 className={utilStyles.heading2Xl}>{name}</h1>
                         </>
                     ):(
                         <>
                         <Link href='/'>
                             <a>
-                            <Image priority src='/images/profile.png' className={utilStyles.borderCircle} height={80} width={80} alt={name}/>
+                            <Image priority src='/images/profile.png' className={utilStyles.borderCircle} height={60} width={60} alt={name}/>
                             </a>
                         </Link>
                         <h2 className={utilStyles.headingLg}>
