@@ -5,7 +5,7 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import 'highlight.js/styles/atom-one-dark.css'
 const name='jiheon';
-export const siteTitle='Next.js Sample website'
+export const siteTitle='Next of Jiheon.tk'
 export default function Layout({children,home}){
     return (
         <div className={styles.container}>
