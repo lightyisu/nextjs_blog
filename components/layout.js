@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-
+import 'highlight.js/styles/atom-one-dark.css'
 const name='jiheon';
 export const siteTitle='Next.js Sample website'
 export default function Layout({children,home}){

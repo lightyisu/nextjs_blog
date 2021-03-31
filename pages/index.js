@@ -17,9 +17,7 @@ export default function Home({sortedPostsData}) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>jiheon</p>
-        <p> (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)</p>
-        <p>blog
+        <p> The migration Blog of Next.js
         </p>
         <ul  className={utilStyles.list}>
           {
@@ -46,7 +44,7 @@ export default function Home({sortedPostsData}) {
 }
 export async function getStaticProps(){
     const sortedPostsData=getAllSortedPostData();
-    console.log(sortedPostsData)
+   
    
   return{
       props:{
