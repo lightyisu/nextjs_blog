@@ -16,9 +16,10 @@ export default function Home({sortedPostsData}) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>jiheon</p>
-        <p> The migration Blog of Next.js
-        </p>
+       
+        <h3> The <span style={{color:'#0070f3',fontSize:'30px'}}>Next</span> Generation of jiheon.tk Blog
+        </h3>
+        <p style={{color:'#0070f3',fontWeight:'bold'}}>✨Powered by Next.js</p>
         <ul  className={utilStyles.list}>
           {
             sortedPostsData.map((post,index)=>{
