@@ -11,7 +11,7 @@ date: '2021-02-20'
 
 ### GULP
 
-<img src='img/gulp-ex2.PNG'/>
+<img src='/images/gulp-ex2.PNG'/>
 
 用于前端自动化流程 类似于`npm script`
 
@@ -45,7 +45,7 @@ gulp.task('watch',()=>{
 
 效果
 
-<img src='img/gulp-ex1.PNG'/>
+<img src='/images/gulp-ex1.PNG'/>
 
 ### VITE
 
@@ -69,4 +69,4 @@ gulp.task('watch',()=>{
 
    2.重写路径 给予裸模块正确的新路径 合法的URL 如`/node_modules/.vite/my-dep.js?v=f3sf2ebd`
 
-* 
+  

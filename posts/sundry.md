@@ -19,7 +19,7 @@ React和Redux
 
 * **SaaS PasS IasS(infrastructure基础设施)**
 
-  <img src='img/what-is-saas.png'/>
+  <img src='/images/what-is-saas.png'/>
 
 * 1、JS中的||符号：
 

@@ -55,3 +55,8 @@ pre{
   color: #fff;
 
 }
+table{
+  display: block;
+  width: 100%;
+  overflow: auto;
+}

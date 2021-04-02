@@ -1,5 +1,5 @@
 ---
-title: 'List FOR Learn'
+title: 'List For Learn'
 date: '2020-11-29'
 ---
 * js异步钩子
@@ -11,8 +11,6 @@ date: '2020-11-29'
 * 模板引擎
 * ESLINT (入门见[https://www.jianshu.com/p/ad1e46faaea2](https://www.jianshu.com/p/ad1e46faaea2))
 * docker学习 虚拟化，容器，应用
-
-[http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 
 * Travis持续集成[https://www.liaoxuefeng.com/article/1083103562955136](https://www.liaoxuefeng.com/article/1083103562955136)
 

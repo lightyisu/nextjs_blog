@@ -9,7 +9,7 @@ date: '2021-03-01'
 
 #### 摘自Jaqub Ajmal 2021/3/1 发布twitter
 
-![](/img/twitter01.jpg)
+![](/images/twitter01.jpg)
 
 > L:gotta say that's not what i thought the yakuza series was about				
 
