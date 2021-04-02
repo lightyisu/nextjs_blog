@@ -1,55 +1,51 @@
 import Head from 'next/head'
+import { getAllSortedPostData } from '../lib/post';
+import style from './next.module.css'
 import Date from '../components/date'
-import Link from 'next/link'
-
-import Layout, { siteTitle } from '../components/layout'
-import { getAllSortedPostData } from '../lib/post'
-
-import utilStyles from '../styles/utils.module.css'
-
-
-
-export default function Home({sortedPostsData}) {
-  return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-       
-        <h3> The <span style={{color:'#0070f3',fontSize:'30px'}}>Next</span> Generation of jiheon.tk Blog
-        </h3>
-        <p style={{color:'#0070f3',fontWeight:'bold'}}>✨Powered by Next.js</p>
-        <ul  className={utilStyles.list}>
-          {
-            sortedPostsData.map((post,index)=>{
-              return (
-                <li key={index} className={utilStyles.listItem}>
-                  <Link href={`posts/${post.fileId}`}>
-                    <a>{post.title}</a>
-                  </Link>
-                  <br/>
-                  <small className={utilStyles.lightText}>
-                    <Date dateString={post.date}/>
-                  </small>
-                </li>
-              )
-            })
-          }
-        </ul>
-      </section>
-
-
-    </Layout>
-  )
+import Link from 'next/link';
+const next=({sortedPostsData})=>{
+    return(
+        <div>
+            <Head>
+                <title>Next generation of jiheon.tk</title>
+            </Head>
+            <header className={style.header}>
+            <p>The Next Generation of jiheon.tk</p>
+            </header>
+            <div className={style.wrapper}>
+                
+               <div className={style.board}>
+                  <h1>The Next Generation </h1>
+                  <h2>of Jiheon.tk</h2> 
+                  <img src='/images/blogging.png' alt='boardpng'/>
+               </div>
+               <div className={style.postWrapper}>
+             
+                {sortedPostsData.map((post,index)=>{
+                    return (
+                        <Link key={index} href={`posts/${post.fileId}`}>
+                        <a  className={style.postblock}>
+                        <div >
+                        <h2>{post.title}</h2>
+                        <Date dateString={post.date}/>
+                     </div>
+                     </a>
+                     </Link>
+                    )
+                })}
+             
+                </div>
+            </div>
+        </div>
+    )
 }
+export default next;
+
 export async function getStaticProps(){
-    const sortedPostsData=getAllSortedPostData();
-   
-   
-  return{
-      props:{
-          sortedPostsData
-      }
+    const sortedPostsData=getAllSortedPostData()
+    return {
+        props:{
+           sortedPostsData
+        }
     }
 }
