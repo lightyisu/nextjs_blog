@@ -17,6 +17,7 @@
 }
 .board{
     width: 100%;
+    margin: 0 auto;
     height: 250px;
     background-color: rgb(62, 74, 233);
     border-radius: 19px;
@@ -40,7 +41,7 @@
     width: 47.88%;
     height: 250px;
     background-color: rgb(241, 43, 43);
-    margin: 20px 20px 10px 0;
+    margin: 10px auto;
     border-radius: 19px;
     color: #fff;
     padding: 40px;
@@ -58,6 +59,21 @@
     display: flex;
     flex-wrap: wrap;
 }
+.footer{
+    background-color: black;
+    height: 140px;
+    text-align: center;
+    color: #fff;
+}
+.footer h3{
+    font-size: 30px;
+    margin: 0;
+}
+.footer p{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 300;
+}
 @media screen and (max-width:1910px) {
     .postblock{
         width: 100%;
@@ -70,7 +86,7 @@
         width: 80%;
     } 
     .postblock{
-        height: 300px;
+        height: 150px;
     }   
 }
 @media screen and (max-width:1300px) {

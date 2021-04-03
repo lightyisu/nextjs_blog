@@ -60,3 +60,6 @@ table{
   width: 100%;
   overflow: auto;
 }
+.nextjsColor{
+  color: #0070f3 !important;
+}
