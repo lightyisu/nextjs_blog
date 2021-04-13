@@ -6,7 +6,7 @@ import Link from 'next/link';
 import 'highlight.js/styles/atom-one-dark.css'
 const name='jiheon';
 export const siteTitle='Next of Jiheon.tk'
-export default function Layout({children,home}){
+export default function Layout({children,bgUrl}){
     return (
         <div className={styles.container}>
             <Head>
@@ -18,37 +18,29 @@ export default function Layout({children,home}){
             </Head>
             <header className={styles.header}>
                 {
-                    home?(
-                        <>
-                        <Image priority src='/images/profile.png' className={utilStyles.borderCircle}
-                            height={60} width={60} alt={name}/>
-                        <h1 className={utilStyles.heading2Xl}>{name}</h1>
-                        </>
-                    ):(
+                   
                         <>
                         <Link href='/'>
-                            <a>
-                            <Image priority src='/images/profile.png' className={utilStyles.borderCircle} height={60} width={60} alt={name}/>
-                            </a>
+                                {/**PAGE BANNER MADED ON 21.4.11 STILL UNFINISHED */}
+                                <div className={utilStyles.postPageBanner} style={bgUrl?{background:`url(${bgUrl})`}:{display:'none'}}>
+                                    
+                                </div>
+                            
                         </Link>
-                        <h2 className={utilStyles.headingLg}>
-                            <Link href='/'>
-                                <a className={utilStyles.colorInherit}>{name}</a>
-                            </Link>
-                        </h2>
+                      
                         </>
-                    )
+                    
                 }
 
             </header>
             <main>
                 {children}
             </main>
-            {!home&&(<div className={styles.backToHome}>
+            <div className={styles.backToHome}>
                 <Link href='/'>
                     back to home
                 </Link>
-            </div>)}
+            </div>
         </div>
     )
 }

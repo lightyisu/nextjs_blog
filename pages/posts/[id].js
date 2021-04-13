@@ -7,7 +7,7 @@ import utilstyles from '../../styles/utils.module.css'
 
 export default function Post({postData}){
     return (
-        <Layout>
+        <Layout bgUrl={postData.bgurl?postData.bgurl:''}>
             <Head>
                 <title>{postData.title}</title>
             </Head>

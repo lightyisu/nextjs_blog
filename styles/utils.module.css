@@ -52,3 +52,12 @@
   .lightText {
     color: #666;
   }
+  .postPageBanner{
+    border-radius: 17px;
+    height: 160px;
+    width: 100%;
+   
+    
+   
+    background-position: -80px -200px !important;
+  }

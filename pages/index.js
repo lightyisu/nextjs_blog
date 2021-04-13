@@ -50,6 +50,7 @@ export default next;
 
 export async function getStaticProps() {
     const sortedPostsData = getAllSortedPostData()
+    // calculate The compiled time
     const buildTime=new Date().toLocaleString()
     return {
         props: {
