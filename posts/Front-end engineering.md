@@ -72,3 +72,30 @@ gulp.task('watch',()=>{
    2.重写路径 给予裸模块正确的新路径 合法的URL 如`/node_modules/.vite/my-dep.js?v=f3sf2ebd`
 
   
+
+### NGINX
+
+* **Nginx** 与 **RTMP(协议)** 搭建实施串流
+
+  https://www.cnblogs.com/linuxAndMcu/p/12517787.html
+
+* **NGINX**  可实现 **反向代理,跨域**
+
+  跨域实现 : 通过配置Nginx实现访问localhost:80 (即Nginx服务器) Nginx通过代理使其访问到 localhost:3000 （即 React的客户端口) 实现了前端通过Nginx展示
+
+  ​      
+
+  ```nginx
+  //NOT REAL CONFIG
+  	{ listen 80
+      location / {proxy=>localhost:3000}
+      location /api {proxy=>localhost:4000}
+      location /thumbnails {proxy=>localhost:4000}}
+  //localhost:3000 : 前端入口
+  //localhost:4000 : 后端入口
+  ```
+
+  项目启动通过 Nginx的80端口启动
+
+  通过 `Nginx`  解决了跨域问题
+
