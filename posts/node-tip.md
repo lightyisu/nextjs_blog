@@ -4,8 +4,7 @@ date: '2020-11-30'
 bgurl: 'https://th.bing.com/th/id/R5bf41d022ce10ad2445d7a3c2449f017?rik=wbHJ9i9j%2fwAq0Q&pid=ImgRaw'
 ---
 
-
-### node小tip
+### Node_Cookie
 
 - 如果想使用服务端传html设置header头`res.setHeader('Content-Type','text/html;charset=utf-8');`
 
@@ -79,3 +78,55 @@ server.listen(3000,'127.0.0.1',()=>{
 ```
 
 **服务端与客户端必须同源HOST 同端口！**
+
+### Node
+
+#### Process.argv
+
+```js
+[
+  'C:\\Program Files\\nodejs\\node.exe',
+  'C:\\Users\\lightyisu\\Desktop\\temp\\node-7day\\index.js'
+]
+```
+
+ `process`是一个全局变量，可通过`process.argv`获得命令行参数。由于`argv[0]`固定等于NodeJS执行程序的绝对路径，`argv[1]`固定等于主模块的绝对路径，因此第一个命令行参数从`argv[2]`这个位置开始。
+
+#### 一个简单的Node.js/CopyFiles功能模块
+
+```js
+//index.js
+//The Copy Process
+const fs=require('fs');
+function copyFile(src,des){
+    fs.writeFileSync(des,fs.readFileSync(src,'utf-8'))
+}
+const argv=process.argv.slice(2);
+copyFile(argv[0],argv[1]);
+console.log('File Copied');
+```
+
+**使用**:
+
+```shell
+node index.js ./m1.js ./mm.js
+```
+
+##### **With Stream** 
+
+##### 减少一次大量内存占用
+
+```js
+//The Stream of Copy Process
+const fs=require('fs');
+function copy(src,dst){
+    fs.createReadStream(src).pipe(fs.createWriteStream(dst))
+}
+const argv=process.argv.slice(2);
+copy(argv[0],argv[1]);
+console.log('File Copied with Stream');
+```
+
+**注**:有时要表示一个很大的数字，比如255，如果要用二进制表示，就是8个1，即11111111，而如果用十六进制表示就是0xff，对于越大的数，用十六进制来表示相对二进制就更加显得简洁。
+那为什么不用十进制呢？因为二进制数是计算机语言，而十六进制 16是2的4次方，这样系统在转换数制时会更加快捷。
+

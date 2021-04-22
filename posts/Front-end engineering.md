@@ -99,3 +99,75 @@ gulp.task('watch',()=>{
 
   通过 `Nginx`  解决了跨域问题
 
+### 前端测试
+
+简单的测试代码
+
+来自：https://juejin.cn/post/6844904196244766728
+
+```js
+const add=(a,b)=>{
+    return a+b;
+}
+function test(funRes){
+    return{
+        toBe:(expectValue)=>{
+            if(funRes===expectValue){
+                console.log('Test Pass')
+            }
+            else{
+                console.log('Fail Test')
+            }
+        }
+    }
+}
+test(add(3,2)).toBe(5)
+```
+
+#### 使用CRA/JEST的前端测试
+
+见:https://juejin.cn/post/6894234532224958478
+
+源组件
+
+```js
+//MessageControl.js
+//The feature of the component is to show msg through the checkbox to display it or not
+const MessageControl=({children})=>{
+  const [showMessage,setShowMessage]=useState(false)
+  return(
+    <div>
+      <label htmlFor='toggle'>Show Mes</label>
+       <input id='toggle' type='checkbox'
+         onChange={(e)=>setShowMessage(e.target.checked)
+         }
+         checked={showMessage}/>
+         {showMessage?children:null}
+    </div>
+  )
+}
+export default MessageControl;
+
+
+```
+
+测试代码
+
+```js
+//MessageControl.test.js
+import '@testing-library/jest-dom'
+import React from 'react';
+import {render,fireEvent,screen} from '@testing-library/react'
+import {MessageControl} from './App'
+it('shows the children when checkbox is checkes',()=>{
+  const testMessage='Test Message';
+  //render的作用：在NODE环境下还原DOM 
+  render(<MessageControl>{testMessage}</MessageControl>)
+  expect(screen.queryByText(testMessage)).toBeNull();
+  fireEvent.click(screen.getByLabelText(/Show/i));
+  expect(screen.getByText(testMessage)).toBeInTheDocument()
+
+})
+ //query* 类型的 API 在被调用的时候，如果没有找到对应的 DOM，会返回 null，但是 get* 在没有找到对应的 DOM 时会直接报错。
+```
+
