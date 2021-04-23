@@ -130,3 +130,197 @@ console.log('File Copied with Stream');
 **注**:有时要表示一个很大的数字，比如255，如果要用二进制表示，就是8个1，即11111111，而如果用十六进制表示就是0xff，对于越大的数，用十六进制来表示相对二进制就更加显得简洁。
 那为什么不用十进制呢？因为二进制数是计算机语言，而十六进制 16是2的4次方，这样系统在转换数制时会更加快捷。
 
+#### Node/Server_case
+
+简单的**Node.js** case案例
+
+**功能**:通过服务器进行同类文件合并Combine
+
+**实现方式**：通过nodejs启用服务器获取Request请求中的URL获得需要合并的文件位置
+
+将文件合并发送给RESPONSE
+
+**index.js**
+
+```js
+const fs=require('fs');
+const path=require('path');
+const http=require('http');
+
+const MIME={
+    '.css':'text/css',
+    '.js':'application/javascript'
+}
+
+const combineFiles=(pathnames,cb)=>{
+    var output=[];
+    (function next(i,len){
+        if(i<len){
+            fs.readFile(pathnames[i],(err,data)=>{
+                if(err){
+                    cb(err)
+                }
+                else{
+                    output.push(data);
+                    next(i+1,len)
+                }
+            })
+        }else{
+            cb(null,Buffer.concat(output))
+        }
+    }(0,pathnames.length))
+}
+const main=(argv)=>{
+    //读取配置文件
+    var config=JSON.parse(fs.readFileSync(argv[0],'utf-8')),
+        root=config.root||'.',
+        port=config.port||80;
+    
+    http.createServer((req,res)=>{
+        var urlInfo=parseUrl(root,req.url);
+        combineFiles(urlInfo.pathnames,(err,data)=>{
+            if(err){
+                res.writeHead(404);
+                res.end(err.message);
+            }
+            else{
+                res.writeHead(200,{
+                    'Content-Type':urlInfo.mime
+                });
+                res.end(data)
+            }
+        })
+
+    }).listen(port)
+    console.log('Server port running on'+port)
+}
+const parseUrl=(root,url)=>{
+    var base,pathnames,parts;
+    if(url.indexOf('??')===-1){
+        url=url.replace('/','/??');
+    }
+    parts=url.split('??');
+    base=parts[0];
+    
+    pathnames=parts[1].split(',').map((val)=>{
+        return path.join(root,base,val)
+    })
+    console.log('root:'+root+' base:'+base)
+    return {
+        mime:MIME[path.extname(pathnames[0])]||'text/plain',
+        pathnames
+    }
+}
+main(process.argv.slice(2));
+```
+
+**config.json**
+
+```json
+{
+    "root":".",
+    "port":"7070"
+}
+```
+
+使用方式:
+
+```sh
+node index.js config.json
+```
+
+请求URL:`http://localhost:7070/??client.js,index.js`
+
+`req.url:/??client.js,index.js`
+
+`root:.`
+
+`base:/`
+
+##### v2
+
+**使用流边读边写版**
+
+```js
+const fs=require('fs');
+const path=require('path');
+const http=require('http');
+
+const MIME={
+    '.css':'text/css',
+    '.js':'application/javascript'
+}
+
+const main=(argv)=>{
+    var config=JSON.parse(fs.readFileSync(argv[0],'utf-8'));
+    var port=config.port||8080;
+    var root=config.root||'.';
+    http.createServer((req,res)=>{
+        var urlInfo=parseUrl(root,req.url);
+        validataFiles(urlInfo.pathnames,(err,pathnames)=>{
+            if(err){
+                res.writeHead(404);
+                res.end(err.message)
+            }else{
+                res.writeHead(200,{
+                    'Content-Type':urlInfo.mime
+                })
+                outputFiles(pathnames,res)
+            }
+        })
+
+    }).listen(port)
+    console.log('Server running on the stream port')
+}
+const outputFiles=(pathnames,writer)=>{
+    (function next(i,len){
+        if(i<len){
+            var reader=fs.createReadStream(pathnames[i]);
+            reader.pipe(writer,{end:false});
+            reader.on('end',()=>{
+                next(i+1,len)
+            })
+            
+        }else{
+            console.log('Successful invoke this')
+            writer.end();
+        }
+    })(0,pathnames.length)
+}
+const validataFiles=(pathnames,cb)=>{
+    (function next(i,len){
+        if(i<len){
+            fs.stat(pathnames[i],(err,stats)=>{
+                if(err){
+                    cb(err);
+                }else if(!stats.isFile()){
+                    cb(new Error())
+                }else{
+                    next(i+1,len)
+                }
+            })
+        }else{
+            cb(null,pathnames)
+        }
+    })(0,pathnames.length)
+}
+const parseUrl=(root,url)=>{
+    var base,pathnames,parts;
+    if(url.indexOf('??')===-1){
+        url=url.replace('/','/??');
+    }
+    parts=url.split('??');
+    base=parts[0];
+    
+    pathnames=parts[1].split(',').map((val)=>{
+        return path.join(root,base,val)
+    })
+    console.log('root:'+root+' base:'+base)
+    return {
+        mime:MIME[path.extname(pathnames[0])]||'text/plain',
+        pathnames
+    }
+}
+main(process.argv.slice(2));
+```
+
