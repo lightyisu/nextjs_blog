@@ -152,3 +152,25 @@ React和Redux
   ![](https://nextjs.org/static/images/learn/data-fetching/static-generation.png)
   
   ![](https://nextjs.org/static/images/learn/data-fetching/server-side-rendering.png)
+
+* **IIFE(立即调用函数表达式)**
+
+  Immediately Invoked Function Expression
+
+  ```js
+  (function () {
+      statements
+  })();
+  ```
+
+* **@tailwind** 
+
+  ```css
+  /* ./src/index.css */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  ```
+
+  在css中更是一个directive 一个指令(官网)，会在build后被转译，原意可能为
+  @import tailwind/xxx

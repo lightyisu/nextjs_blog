@@ -1,15 +1,4 @@
-.header{
-    background-color: black;
-    height: 40px;
-    color: #fff;
-    font-style: italic;
-    font-weight: bold;
-    line-height: 35px;
-    padding-left: 20px;
-}
-.header p{
-    margin: 0;
-}
+
 .wrapper{
     margin: 4rem auto;
     width: 60%;
@@ -18,7 +7,7 @@
 .board{
     width: 100%;
     margin: 0 auto;
-    height: 250px;
+    
     background-color: rgb(62, 74, 233);
     border-radius: 19px;
     color: #fff;
@@ -61,7 +50,8 @@
 }
 .footer{
     background-color: black;
-    height: 140px;
+    height: 200px;
+    padding: 20px;
     text-align: center;
     color: #fff;
 }
@@ -88,14 +78,4 @@
     .postblock{
         height: 150px;
     }   
-}
-@media screen and (max-width:1300px) {
-    .board{
-        height: 400px;
-    }
-    .board img{
-        position: static;
-        width: 40%;
-    }
-    
 }
