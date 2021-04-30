@@ -26,15 +26,7 @@
     right: 4rem;
     top: 2rem;
 }
-.postblock{
-    width: 47.88%;
-    height: 250px;
-    background-color: rgb(241, 43, 43);
-    margin: 10px auto;
-    border-radius: 19px;
-    color: #fff;
-    padding: 40px;
-}
+
 .postblock h2{
     font-size: 30px;
     margin: 0;
@@ -50,7 +42,7 @@
 }
 .footer{
     background-color: black;
-    height: 200px;
+    height: 250px;
     padding: 20px;
     text-align: center;
     color: #fff;
@@ -64,18 +56,4 @@
     font-size: 20px;
     font-weight: 300;
 }
-@media screen and (max-width:1910px) {
-    .postblock{
-        width: 100%;
-    }
-    
-    
-}
-@media screen and (max-width:600px){
-    .wrapper{
-        width: 80%;
-    } 
-    .postblock{
-        height: 150px;
-    }   
-}
+
