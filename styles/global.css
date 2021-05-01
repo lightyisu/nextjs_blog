@@ -11,6 +11,24 @@
   li i{
     @apply  w-6 h-6 bg-cover inline-block relative top-1 mr-2;
   }
+  .icon{
+    @apply  w-6 h-6 bg-cover inline-block relative top-1 mr-2;
+  }
+  h1{
+    @apply text-5xl font-bold m-3
+  }
+  h2{
+    @apply text-3xl font-bold m-3
+  }
+  h3{
+    @apply text-2xl font-bold m-3
+  }
+  h4{
+    @apply text-xl font-bold m-3
+  }
+  p{
+    @apply p-4
+  }
   
 }
 body {
@@ -27,7 +45,7 @@ body {
 }
 
 a {
-  color: rgb(255, 70, 45);
+  
   text-decoration: none;
 }
 

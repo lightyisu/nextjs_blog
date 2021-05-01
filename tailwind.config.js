@@ -7,6 +7,7 @@ module.exports = {
     },
     extend: {
       backgroundImage:theme=>({
+        'github-icon':'url("/images/github.png")',
         'all-icon':'url("/images/all.png")',
         'react-icon':'url("/images/react.png")',
         'vue-icon':'url("/images/vuejs.png")',

@@ -36,7 +36,7 @@ export default function Layout({children,bgUrl}){
             <main>
                 {children}
             </main>
-            <div className={styles.backToHome}>
+            <div className={styles.backToHome} className='text-red-500'>
                 <Link href='/'>
                     back to home
                 </Link>

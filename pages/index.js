@@ -13,15 +13,17 @@ const next = ({ sortedPostsData, buildTime }) => {
             <Head >
                 <title>Next generation of jiheon.tk</title>
             </Head>
-            <header className='text-red-500 p-4 border-solid border-b flex relative  font-bold'>
+            <header className='text-red-500 p-1 border-solid border-b flex relative  font-bold'>
+                
                 <p className='text-2xl'>Next.jiheon.tk</p>
                 <button className='absolute right-6 bg-red-500 shadow-lg  text-white top-2 rounded-xl p-2'>Dark Mode(soon)</button>
             </header>
             <NavBtn setTag={setTag} filterTag={filterTag} />
             
             <div className='flex justify-center bg-gray-200'>
-                <div className='min-w-300 hidden sm:block'>
+                <div className='min-w-300 hidden sm:block mb-10'>
                    <TagNavList setTag={setTag} filterTag={filterTag}/>
+                   <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>
                 </div>
 
                 <div className='flex sm:w-1/3 w-10/12 flex-wrap ' >

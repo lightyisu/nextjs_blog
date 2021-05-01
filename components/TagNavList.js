@@ -9,6 +9,7 @@ export default function TagNavList({ setTag ,filterTag}) {
             <li className={filterTag=='vue'?'bg-white':''} onClick={() => { setTag('vue') }}><i className='bg-vue-icon'></i>Vue</li>
             <li className={filterTag=='node'?'bg-white':''} onClick={() => { setTag('node') }}><i className='bg-node-icon'></i>Node.js</li>
             <li className={filterTag=='list'?'bg-white':''} onClick={() => { setTag('list') }}><i className='bg-list-icon'></i>List</li>
+            <li className={filterTag=='others'?'bg-white':''} onClick={() => { setTag('others') }}>Others</li>
         </ul>
     )
 }
