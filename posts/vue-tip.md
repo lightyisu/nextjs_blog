@@ -2,6 +2,7 @@
 title: 'Vue/record'
 date: '2020-12-02'
 bgurl: 'https://th.bing.com/th/id/Rec462f671df6ce4ba915e746b1977c56?rik=OsE0zuATe%2fbYTQ&pid=ImgRaw'
+tags: 'vue'
 ---
 ### vue destroy和beforeDestroy钩子在路由中作用比较大
 

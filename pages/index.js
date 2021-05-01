@@ -4,7 +4,10 @@ import style from './next.module.css'
 import DateComponent from '../components/date'
 import Link from 'next/link';
 import NavBtn from '../components/Nav-btn'
+import TagNavList from '../components/TagNavList';
+import { useState } from 'react';
 const next = ({ sortedPostsData, buildTime }) => {
+    let [filterTag,setTag]=useState('all');
     return (
         <div>
             <Head >
@@ -14,20 +17,19 @@ const next = ({ sortedPostsData, buildTime }) => {
                 <p className='text-2xl'>Next.jiheon.tk</p>
                 <button className='absolute right-6 bg-red-500 shadow-lg  text-white top-2 rounded-xl p-2'>Dark Mode(soon)</button>
             </header>
-            <NavBtn/>
+            <NavBtn setTag={setTag} filterTag={filterTag} />
+            
             <div className='flex justify-center bg-gray-200'>
                 <div className='min-w-300 hidden sm:block'>
-                    <ul className='p-10'>
-                        <li ><i className='bg-react-icon'></i>React</li>
-                        <li ><i className='bg-vue-icon'></i>Vue</li>
-                        <li><i className='bg-node-icon'></i>Node.js</li>
-                        <li ><i className='bg-list-icon'></i>List</li>
-                    </ul>
+                   <TagNavList setTag={setTag} filterTag={filterTag}/>
                 </div>
 
                 <div className='flex sm:w-1/3 w-10/12 flex-wrap ' >
 
                     {sortedPostsData.map((post, index) => {
+                        if(post.tags!=filterTag&&filterTag!='all'){
+                            return null;
+                        }
                         return (
                             <Link key={index} href={`posts/${post.fileId}`}>
 

@@ -2,6 +2,7 @@
 title: 'React/Record'
 date: '2021-01-25'
 bgurl: 'https://reactjs.org/logo-og.png'
+tags: 'react'
 ---
 # React
 

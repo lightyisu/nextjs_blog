@@ -3,6 +3,7 @@ title: '前端工程化与周边'
 date: '2021-02-20'
 bgurl: '/images/gulp-ex2.PNG'
 bgoffset: '-10px 0px'
+tags: 'others'
 ---
 
 学习备忘

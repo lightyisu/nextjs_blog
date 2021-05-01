@@ -1,6 +1,7 @@
 ---
 title: 'Planing list'
 date: '2021-02-14'
+tags: 'list'
 ---
 
 

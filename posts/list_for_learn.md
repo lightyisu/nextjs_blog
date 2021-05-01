@@ -1,6 +1,7 @@
 ---
 title: 'List For Learn'
 date: '2020-11-29'
+tags: 'list'
 ---
 * js异步钩子
 * vue destory的作用和意义(消除定时器等副作用)

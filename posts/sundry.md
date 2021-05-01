@@ -1,6 +1,7 @@
 ---
 title: '零碎'
 date: '2021-02-06'
+tags: 'others'
 ---
 
 React和Redux
