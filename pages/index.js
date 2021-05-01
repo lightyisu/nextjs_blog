@@ -7,35 +7,42 @@ import NavBtn from '../components/Nav-btn'
 import TagNavList from '../components/TagNavList';
 import { useState } from 'react';
 const next = ({ sortedPostsData, buildTime }) => {
-    let [filterTag,setTag]=useState('all');
+    let [filterTag, setTag] = useState('all');
     return (
         <div>
             <Head >
                 <title>Next generation of jiheon.tk</title>
             </Head>
-            <header className='text-red-500 p-1 border-solid border-b flex relative  font-bold'>
+            <header className='text-black p-4 border-solid border-b flex relative content-center'>
+
+                <i className='bg-logo bg-90% inline-block w-36 bg-no-repeat h-12 ml-5 '></i>
+                <div className='absolute right-7 top-7 flex content-end'>
                 
-                <p className='text-2xl'>Next.jiheon.tk</p>
-                <button className='absolute right-6 bg-red-500 shadow-lg  text-white top-2 rounded-xl p-2'>Dark Mode(soon)</button>
+                <label for="toggle">
+                   
+                    <input type="checkbox" id='toggle' />
+                    <span className='toggle'></span>
+                </label>
+                </div>
             </header>
             <NavBtn setTag={setTag} filterTag={filterTag} />
-            
+
             <div className='flex justify-center bg-gray-200'>
                 <div className='min-w-300 hidden sm:block mb-10'>
-                   <TagNavList setTag={setTag} filterTag={filterTag}/>
-                   <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>
+                    <TagNavList setTag={setTag} filterTag={filterTag} />
+                    <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>
                 </div>
 
                 <div className='flex sm:w-1/3 w-10/12 flex-wrap ' >
 
                     {sortedPostsData.map((post, index) => {
-                        if(post.tags!=filterTag&&filterTag!='all'){
+                        if (post.tags != filterTag && filterTag != 'all') {
                             return null;
                         }
                         return (
                             <Link key={index} href={`posts/${post.fileId}`}>
 
-                                <a  className='relative overflow-hidden bg-red-500 my-6 rounded-2xl text-white w-full  h-80 shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {}}>
+                                <a className='relative overflow-hidden bg-red-500 my-6 rounded-2xl text-white w-full  h-80 shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {}}>
 
                                     <div className='w-full p-4 absolute bottom-0  bg-white text-black' >
                                         <h2 className='text-xl font-bold'>{post.title}</h2>
@@ -51,10 +58,10 @@ const next = ({ sortedPostsData, buildTime }) => {
             </div>
             <footer className={style.footer}>
                 <h3>Powered By <a href='https://nextjs.org' className='nextjsColor'>Next.js</a>&<a href='https://tailwindcss.com/' className='text-green-200'>Tailwind.css</a></h3>
-                <p >由<span className='nextjsColor'>Next.js</span>驱动</p>
-                <p>由<span className='text-green-200'>Tailwind.css</span>框架驱动样式</p>
+                <p className='p-0'>由<span className='nextjsColor'>Next.js</span>驱动</p>
+                <p className='p-0'>由<span className='text-green-200'>Tailwind.css</span>框架驱动样式</p>
 
-                <p>最后编译于{buildTime}</p>
+                <p className='p-0'>最后编译于{buildTime}</p>
 
             </footer>
         </div>
