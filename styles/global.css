@@ -6,13 +6,13 @@
     @apply bg-gray-100;
   }
   li{
-    @apply  font-bold  hover:bg-white sm:hover:bg-gray-300 rounded-3xl text-xl  cursor-pointer mb-4 list-disc;
+    @apply  font-bold  list-disc;
   }
   ul{
-    @apply p-4
+    @apply p-4;
   }
   .navBtn li{
-    @apply pl-6 p-3 list-none
+    @apply pl-6 p-3 list-none  hover:bg-white sm:hover:bg-gray-300 rounded-3xl text-xl  cursor-pointer mb-4;
   }
   li i{
     @apply  w-6 h-6 bg-cover inline-block relative top-1 mr-2;
