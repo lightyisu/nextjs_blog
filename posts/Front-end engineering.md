@@ -172,3 +172,57 @@ it('shows the children when checkbox is checkes',()=>{
  //query* 类型的 API 在被调用的时候，如果没有找到对应的 DOM，会返回 null，但是 get* 在没有找到对应的 DOM 时会直接报错。
 ```
 
+#### Vnode/Virtual DOM
+
+> vnode 作用:使用DIFF算法以寻求最大效率的DOM更新替换 提升DOM的重绘重排效率 减少DOM更新开销，使得简单数据的更新变得高效
+
+现有成型库:**snabbdom**(Vue采用)
+
+diff算法中关注的三个核心：节点类型，属性数据，子节点对象
+
+**目的：**
+
+**提升前端渲染性能**！
+
+**提升前端渲染性能**！
+
+**提升前端渲染性能**！
+
+```js
+//From article:https://juejin.cn/post/6844903609667321863#heading-4
+//snabbdom api: v 3.0.1
+import {init,classModule,propsModule,styleModule,eventListenersModule,h} from 'snabbdom'
+const patch=init([
+    classModule,
+    propsModule,
+    styleModule,
+    eventListenersModule
+])
+const container=document.getElementById('root');
+
+function View(name){
+    return h('div',null,[
+        h('input',{props:{type:'text',placeholder:'Enter your name'},on:{
+            input:updateText
+        }}),
+        h('p',null,'your name is '+name)
+    ])
+}
+const updateText=(e)=>{
+    let newVnode=View(e.target.value);
+    currentVnode=patch(currentVnode,newVnode);
+}
+let currentVnode=patch(container,View(''))
+```
+
+以上是一个Input 表单元素值如何与 p 中的name值保持一致，
+
+表单事件触发Input表单事件导致重绘Vnode 再通过新旧Vnode比较**(DIFF)**进行最终的实际DOM绘制
+
+最终呈现的DOM重绘来自Vnode的DIFF算法结果
+
+使得实际绘制编排效率提升,DOM重绘量减少
+
+即Vue中`V-model`原理实现
+
+Vue,React中的key能够帮助我们在DIFF时效率更高 因为DIFF部分算法基于Key的比较

@@ -6,7 +6,13 @@
     @apply bg-gray-100;
   }
   li{
-    @apply pl-6 p-3 font-bold  hover:bg-white sm:hover:bg-gray-300 rounded-3xl text-xl  cursor-pointer mb-4;
+    @apply  font-bold  hover:bg-white sm:hover:bg-gray-300 rounded-3xl text-xl  cursor-pointer mb-4 list-disc;
+  }
+  ul{
+    @apply p-4
+  }
+  .navBtn li{
+    @apply pl-6 p-3 list-none
   }
   li i{
     @apply  w-6 h-6 bg-cover inline-block relative top-1 mr-2;
@@ -29,7 +35,9 @@
   p{
     @apply p-4
   }
-  
+  pre{
+    @apply mb-6
+  }
 }
 body {
   padding: 0;
