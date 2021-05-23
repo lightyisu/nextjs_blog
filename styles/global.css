@@ -112,6 +112,7 @@ a:hover {
   text-decoration: underline;
 }
 
+
 img {
   max-width: 100%;
   display: block;
@@ -153,4 +154,23 @@ table{
 }
 .nextjsColor{
   color: #0070f3 !important;
+}
+#line1{
+   
+  transform-origin: left;
+  animation: 3s infinite ease-in-out  slidein;
+  height: 12px;
+  width: 70%;
+  background: #007fff;
+  margin: 20px;
+  
+  border-radius: 10px;
+}
+@keyframes slidein {
+  0%{
+      transform: scaleX(0);
+  }
+  100%{
+      transform: scaleX(1) ;
+  }
 }

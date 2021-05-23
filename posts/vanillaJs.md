@@ -54,3 +54,8 @@ export default {
 来自MDN @keyframes and animation
 
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/@keyframes
+
+**效果如下:**
+
+<div id="line1" ></div>
+
