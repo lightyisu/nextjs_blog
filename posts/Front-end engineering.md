@@ -226,3 +226,55 @@ let currentVnode=patch(container,View(''))
 即Vue中`V-model`原理实现
 
 Vue,React中的key能够帮助我们在DIFF时效率更高 因为DIFF部分算法基于Key的比较
+
+#### Vue响应式探索
+
+> 前端/数据响应式
+
+基于**Proxy**的响应式数据
+
+简单示例/by self
+
+```html
+ <div id="app"></div>
+```
+
+
+
+```js
+   let obj={a:2021};
+   
+    let objProxy=new Proxy(obj,{
+        set(target,prop,val,receiver){
+            document.getElementById('app').innerHTML=val;
+            return Reflect.set(...arguments);
+        }
+    })
+    document.getElementById('app').innerHTML=objProxy.a;
+//修改objProxy.a='Hello world'此时DOM也会同步更新
+```
+
+每当设置新值(更改objProxy.a)后DOM中的数据会相应更新
+
+基于**Object.defineProperty**
+
+```js
+	var a=2021
+    let obj={}
+    Object.defineProperty(obj,'a',{
+        get(){
+            return a
+        },
+      
+        set(val){
+            document.getElementById('app').innerHTML=val;
+            a=val;
+            
+        }
+    })
+    document.getElementById('app').innerHTML=obj.a;
+    document.querySelector('button').onclick=()=>{
+        obj.a='I clicked it!'
+    }
+```
+
