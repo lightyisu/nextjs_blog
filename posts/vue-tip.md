@@ -336,5 +336,60 @@ path:'/xxx'的问题
 
   <img src='/images/urlandencode.jpg'/>
   
-  
+
+### Vue3
+
+###### setup
+
+From:
+
+https://v3.cn.vuejs.org/guide/composition-api-introduction.html#watch-%E5%93%8D%E5%BA%94%E5%BC%8F%E6%9B%B4%E6%94%B9
+
+```js
+setup (props) {
+  // 使用 `toRefs` 创建对prop的 `user` property 的响应式引用
+  const { user } = toRefs(props)
+
+  const repositories = ref([])
+  const getUserRepositories = async () => {
+    // 更新 `prop.user` 到 `user.value` 访问引用值
+    repositories.value = await fetchUserRepositories(user.value)
+  }
+
+  onMounted(getUserRepositories)
+
+  // 在用户 prop 的响应式引用上设置一个侦听器
+  watch(user, getUserRepositories)
+
+  return {
+    repositories,
+    getUserRepositories
+  }
+}
+```
+
+**The Reason Why it use toRefs to handle the props data:**
+
+```js
+import { toRefs,onUpdated,reactive} from 'vue'
+export default {
+    props:['msg'],
+    setup(props){
+        onUpdated(()=>{
+            console.log(props.msg)
+        })
+        return reactive({msg:props.msg})
+    }
+}
+```
+
+**setup**中从父组件下行的props仍旧是响应式更新的 
+
+每次的onUpdate总能获取到最新值
+
+但是setup return的对象不是一个响应式的对象 无法进行更新的派发
+
+如果直接`return {xxx:props.xxx}`
+
+视图将不会进行xxx的更新
 
