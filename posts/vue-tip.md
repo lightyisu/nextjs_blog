@@ -383,13 +383,21 @@ export default {
 }
 ```
 
-**setup**中从父组件下行的props仍旧是响应式更新的 
+**setup**中
 
-每次的onUpdate总能获取到最新值
+从父组件下行的props 可以在setup以函数形式获得最新值
 
-但是setup return的对象不是一个响应式的对象 无法进行更新的派发
+props.msg也不是一个响应式对象 只是单独的值 未被附加proxy不能进行视图更新(proxy附加用以进行视图响应式更新 / attach the proxy)
+
+setup return的对象也不是一个响应式的对象 无法进行更新的派发（非响应式，不会触发试图更新）
 
 如果直接`return {xxx:props.xxx}`
 
 视图将不会进行xxx的更新
+
+**响应式:**数据模型是被代理的 JavaScript 对象。而当你修改它们时，视图会进行更新。这让状态管理非常简单直观。
+
+https://v3.cn.vuejs.org/guide/reactivity.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E6%80%A7
+
+> ref与reactive 区别：https://zhuanlan.zhihu.com/p/267967246
 
