@@ -38,7 +38,10 @@ export default function Layout({children,bgUrl}){
             </main>
             <div  className='text-red-500 my-10'>
                 <Link href='/'>
-                    back to home
+                    <div className='inline-block p-2 text-white fixed right-4 bottom-3 rounded-2xl cursor-pointer bg-red-400 font-bold
+                    text-center tracking-widest'>
+                       返回首页
+                    </div>
                 </Link>
             </div>
         </div>

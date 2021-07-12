@@ -401,3 +401,61 @@ https://v3.cn.vuejs.org/guide/reactivity.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%
 
 > ref与reactive 区别：https://zhuanlan.zhihu.com/p/267967246
 
+##### Teleport
+
+```html
+<template>
+  <teleport to='body'>
+      <div>
+          <h1>kei</h1>
+      </div>
+  </teleport>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style>
+
+</style>
+```
+
+```html
+<html lang="en">
+
+<head>
+  <script type="module" src="/@vite/client"></script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vite App</title>
+  <style type="text/css">
+
+  </style>
+  <style type="text/css">
+
+  </style>
+  <style type="text/css">
+
+  </style>
+</head>
+
+<body>
+  <div id="app" data-v-app="">
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <script type="module" src="/src/main.js"></script>
+
+
+  <div>
+    <h1>kei</h1>
+  </div>
+</body>
+
+</html>
+```
+
