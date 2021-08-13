@@ -11,7 +11,7 @@ const next = ({ sortedPostsData, buildTime }) => {
     return (
         <div>
             <Head >
-                <title>Next generation of jiheon.tk</title>
+                <title>DDU-DU Blog Area</title>
             </Head>
             <header className='text-black p-4 border-solid border-b flex relative content-center'>
 
