@@ -15,7 +15,7 @@ const next = ({ sortedPostsData, buildTime }) => {
             </Head>
             <header className='text-black p-4 border-solid border-b flex relative content-center'>
 
-                <i className='bg-logo bg-90% inline-block w-36 bg-no-repeat h-12 ml-5 '></i>
+                <i className='bg-logo bg-90% inline-block w-36 bg-no-repeat h-16 ml-5 '></i>
                 <div className='absolute right-7 top-7 flex content-end'>
                 
                 <label for="toggle">
