@@ -8,6 +8,8 @@ import TagNavList from '../components/TagNavList';
 import { useState } from 'react';
 const next = ({ sortedPostsData, buildTime }) => {
     let [filterTag, setTag] = useState('all');
+    let coverColor=['#FFEE58','#FF6958','#656CFF','#8D77FF','#D799FF','#D688FF'];
+
     return (
         <div>
             <Head >
@@ -40,13 +42,13 @@ const next = ({ sortedPostsData, buildTime }) => {
                             return null;
                         }
                         return (
-                            <Link key={index} href={`posts/${post.fileId}`}>
+                            <Link  key={index} href={`posts/${post.fileId}`}>
 
-                                <a className='relative overflow-hidden bg-red-500 my-6 rounded-2xl text-white w-full  h-80 shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {}}>
+                                <a className='relative overflow-hidden  my-6 rounded-2xl text-white md:w-64  md:h-96 m-2  h-64 w-36  shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {background:coverColor[Math.floor(Math.random()*coverColor.length)]}}>
 
-                                    <div className='w-full p-4 absolute bottom-0  bg-white text-black' >
-                                        <h2 className='text-xl font-bold'>{post.title}</h2>
-                                        <DateComponent dateString={post.date} />
+                                    <div className='w-full p-5 absolute bottom-0  bg-white text-black' >
+                                        <h2 className=' break-all w-full text-2xl m-0 font-bold'>{post.title}</h2>
+                                        <DateComponent  dateString={post.date} />
                                     </div>
                                 </a>
 
