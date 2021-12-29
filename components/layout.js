@@ -41,7 +41,7 @@ export default function Layout({children,bgUrl}){
             
                
                 <Link href='/' >
-                    <div className='inline-block p-3 m-5 ml-6 text-white  fixed sm:ml-36 w-72 text-center bottom-0 rounded-3xl cursor-pointer  bg-red-500 font-bold
+                    <div className='inline-block p-3 m-5 ml-7 text-white  fixed sm:ml-36 w-72 text-center bottom-0 rounded-3xl cursor-pointer  bg-red-500 font-bold
                     text-sm tracking-widest ' >
                        返回首页
                     </div>
