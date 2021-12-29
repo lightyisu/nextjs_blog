@@ -5,8 +5,12 @@ module.exports = {
     minWidth:{
       '300':'300px'
     },
+
  
     extend: {
+      height:{
+        '3.4r':'3.4rem'
+      },
       backgroundImage:theme=>({
         'logo':'url("/images/logo.png")',
         'github-icon':'url("/images/github.png")',

@@ -35,15 +35,19 @@ export default function Layout({children,bgUrl}){
             </header>
             <main>
                 {children}
-            </main>
-            <div  className='text-red-500 my-10'>
-                <Link href='/'>
-                    <div className='inline-block p-3 text-white fixed right-4 bottom-3 rounded-3xl cursor-pointer bg-red-500 font-bold
-                    text-sm tracking-widest'>
+            
+            
+               
+                <Link href='/' >
+                    <div className='inline-block p-3 m-5 ml-24 text-white  fixed md:ml-36 w-72 text-center bottom-0 rounded-3xl cursor-pointer  bg-red-500 font-bold
+                    text-sm tracking-widest ' >
                        返回首页
                     </div>
                 </Link>
-            </div>
+                
+               
+            
+            </main>
         </div>
     )
 }

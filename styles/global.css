@@ -174,3 +174,6 @@ table{
       transform: scaleX(1) ;
   }
 }
+button:focus{
+  outline: none;
+}

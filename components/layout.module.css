@@ -3,9 +3,13 @@
   word-wrap: break-word;
   padding: 0 1rem;
   margin: 3rem auto 6rem;
+  
 
 }
-
+.wrapper{
+  width: 42px;
+  height: 100px;
+}
 
 
 .header {
