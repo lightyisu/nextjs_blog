@@ -21,7 +21,8 @@ module.exports = {
         'list-icon':'url("/images/list.png")'
       }),
       backgroundSize:{
-        '90%':'90%'
+        '90%':'90%',
+        '75%':'75%'
       }
     },
   },

@@ -34,10 +34,10 @@ const next = ({ sortedPostsData, buildTime }) => {
                         return (
                             <Link  key={index} href={`posts/${post.fileId}`}>
 
-                                <a className='relative overflow-hidden  my-6 rounded-2xl text-white md:w-40  md:h-30 m-2  h-64 w-36  shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {background:coverColor[Math.floor(Math.random()*coverColor.length)]}}>
+                                <a className='relative overflow-hidden  my-6 rounded-2xl text-white md:w-40  md:h-26 m-2  h-64 w-36  shadow-2xl' style={post.bgurl ? { background: `url(${post.bgurl})  ${post.bgoffset ? post.bgoffset : '-150px'}` } : {background:coverColor[Math.floor(Math.random()*coverColor.length)]}}>
 
                                     <div className='w-full p-5 absolute bottom-0  bg-white text-black' >
-                                        <h2 className=' break-all w-full text-2xl m-0 font-bold'>{post.title}</h2>
+                                        <h2 className=' break-all w-full text-lg m-0 font-bold'>{post.title}</h2>
                                         <DateComponent   dateString={post.date} />
                                     </div>
                                 </a>
