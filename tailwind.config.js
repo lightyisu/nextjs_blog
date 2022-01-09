@@ -8,6 +8,9 @@ module.exports = {
 
  
     extend: {
+      width:{
+        'sp':'42rem'
+      },
       height:{
         '3.4r':'3.4rem'
       },

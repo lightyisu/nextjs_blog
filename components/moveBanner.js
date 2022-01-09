@@ -8,7 +8,7 @@ export default function MoveBanner() {
   const [offset, setOffset] = useState(0);
   const [resetPos,setResetPos]=useState(false)
  useEffect(()=>{
-    setInterval(() => {
+  const timer=  setInterval(() => {
         setOffset(t=>{
           if(t>-200){
             setResetPos(false)
@@ -19,6 +19,9 @@ export default function MoveBanner() {
           }
         })
     }, 3000);
+    return ()=>{
+      clearInterval(timer)
+    }
     
   },[]);
   const ref=useRef();

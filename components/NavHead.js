@@ -2,7 +2,7 @@ import Link from "next/link"
 import MoveBanner from "./moveBanner"
 export default function NavHead(){
     return(
-        <header className='text-black p-4 border-solid border-b flex relative content-center border-gray-300 '>
+        <header className='top-0 z-10 text-black p-4 border-solid border-b flex fixed w-full left-0 bg-white blur-sm content-center border-gray-300 '>
         <Link href='/'>
         <i className='bg-logo bg-90%  cursor-pointer inline-block w-11 bg-no-repeat h-3.4r p-2 sm:ml-10 ml-4 '></i>
         </Link>

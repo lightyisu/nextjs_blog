@@ -17,9 +17,10 @@ const next = ({ sortedPostsData, buildTime }) => {
                 <title>Timelapse blog</title>
             </Head>
             <NavHead/>
+         
             <NavBtn setTag={setTag} filterTag={filterTag} />
 
-            <div className='flex justify-center bg-gray-200'>
+            <div className='flex justify-center pt-24 bg-gray-200'>
                 <div className='min-w-300 hidden sm:block mb-10'>
                     <TagNavList setTag={setTag} filterTag={filterTag} />
                     <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>
@@ -47,7 +48,8 @@ const next = ({ sortedPostsData, buildTime }) => {
                     })}
 
                 </div>
-            </div>
+                </div>
+            
             <footer className={style.footer}>
                 <h3>Powered By <a href='https://nextjs.org' className='nextjsColor'>Next.js</a>&<a href='https://tailwindcss.com/' className='text-green-200'>Tailwind.css</a></h3>
                 <p className='p-0'>由<span className='nextjsColor'>Next.js</span>驱动</p>

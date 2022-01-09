@@ -9,7 +9,7 @@ const name='jiheon';
 export const siteTitle='Next of Jiheon.tk'
 export default function Layout({children,bgUrl}){
     return (
-        <div className={styles.container}>
+        <div className={styles.container} >
             <Head>
                 <link rel='icon' href='/favicon.ico'/>
                 <meta name='description'
@@ -18,6 +18,7 @@ export default function Layout({children,bgUrl}){
                 <meta name='twitter:card' content='summary_large_image'/>
             </Head>
             <NavHead/>
+            <div className='pt-20'>
             <header className={styles.header}>
                 {
                    
@@ -37,7 +38,7 @@ export default function Layout({children,bgUrl}){
             </header>
             <main>
                 {children}
-            
+               
             
                
                 <Link href='/' >
@@ -50,6 +51,7 @@ export default function Layout({children,bgUrl}){
                
             
             </main>
+            </div>
         </div>
     )
 }
