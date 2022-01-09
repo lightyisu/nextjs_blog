@@ -459,3 +459,96 @@ export default {
 </html>
 ```
 
+### VUE 2022 重学
+
+#### DOM (即非字符串的模板) 对大小写不敏感 只喜欢小写
+
+意为**纯在**/**直接在**html编写的，**非**模板字符串/单文件组件（这类会经过一层编译再传给html)
+
+**纯在html**（文件）编写的所有关于vue的代码是必须要小写的 无论是组件名还是attributes都是不敏感大写的
+
+#### 动态组件(keep-alive)
+
+vue内置的component组件 辅以is的attribute进行动态切换组件
+
+注意的是使用 `<keep-alive>` 包裹component组件可以保持组件的数据域
+
+这可能比vue文档更好理解 自己写了个更好理解的动态组件案例
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      list-style: none;
+      display: inline-block;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li @click='currentTitle=item' :class='currentTitle==item?"active":""' v-for='(item,index) in title' :key='index'>{{item}}</li>
+    </ul>
+    <keep-alive>
+      <component :is='currentTitle'></component>
+    </keep-alive>
+   
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.25/dist/vue.global.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
+```
+
+
+
+```js
+//index.js
+const app=Vue.createApp({
+    data(){
+        return{
+            title:['home','posts','archive'],
+            currentTitle:'home'
+        }
+    }
+})
+app.component('home',{
+    template:`This is home component`
+})
+app.component('posts',{
+    data(){
+        return{
+            date:'2022/01/06'
+        }
+    },
+    template:`
+    
+    <input type='text' v-model='date'/>
+    This is posts component
+    <p>{{date}}</p>
+    `
+})
+app.component('archive',{
+    template:`This is archive component`
+})
+app.mount('#app');
+```
+
+当处在posts组件时并改变日期（date) 此时再去切换component也就是is的值改变后 我们仍然能够保持改变posts里的 `data` 中的日期会完好无损地保存下来 所做的所有改变也就是changed后的 posts 的数据能够保存，也就是很好地体现了keep-alive的作用。
+

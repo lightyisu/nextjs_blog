@@ -1,0 +1,24 @@
+.list{
+    list-style: none !important;
+    padding: 0;
+    line-height: 0;
+    
+}
+.showWindow{
+    overflow: hidden;
+    position: relative;
+    width: 230px;
+    height: 50px;
+   
+    display: inline-block;
+}
+.list li{
+    display: inline-block;
+    width: 230px;
+    height: 50px;
+}
+.innerAD{
+    position: absolute;
+   
+    
+}

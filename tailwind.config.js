@@ -18,7 +18,8 @@ module.exports = {
         'react-icon':'url("/images/react.png")',
         'vue-icon':'url("/images/vuejs.png")',
         'node-icon':'url("/images/nodejs.png")',
-        'list-icon':'url("/images/list.png")'
+        'list-icon':'url("/images/list.png")',
+        'multiply-icon':'url("/images/multiply.svg")'
       }),
       backgroundSize:{
         '90%':'90%',

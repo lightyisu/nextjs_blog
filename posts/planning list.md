@@ -18,4 +18,5 @@ tags: 'list'
 * css tricks https://css-tricks.com/
 * 7天 Node.js https://nqdeng.github.io/7-days-nodejs/#1.4
 * 前端测试/Test
+* css动画 cubic-bezier https://cubic-bezier.com/#.83,.9,.69,.67
 

@@ -6,10 +6,10 @@
     @apply bg-gray-100;
   }
   li{
-    @apply  font-bold  list-disc;
+    @apply  font-bold  ;
   }
   ul{
-    @apply p-4;
+    @apply p-4 list-disc;;
   }
   .navBtn li{
     @apply pl-6 p-3 list-none  hover:bg-white sm:hover:bg-gray-300 rounded-3xl text-xl  cursor-pointer mb-4;
