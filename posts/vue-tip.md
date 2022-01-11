@@ -552,3 +552,107 @@ app.mount('#app');
 
 当处在posts组件时并改变日期（date) 此时再去切换component也就是is的值改变后 我们仍然能够保持改变posts里的 `data` 中的日期会完好无损地保存下来 所做的所有改变也就是changed后的 posts 的数据能够保存，也就是很好地体现了keep-alive的作用。
 
+### Ref
+
+在Vue 3.0中有两种Ref引用：
+
+1.**响应式引用** 对基本数据类型的响应式包裹 包裹之后的返回响应式对象 数据值存在此对象的属性value中
+
+常用
+
+```js
+//setup语法
+let temp=ref(2022);
+console.log(temp.value);
+return{
+    temp
+}
+```
+
+2.**模板引用** 对DOM元素的引用 用以在js访问DOM元素/组件
+
+```js
+//2.0中的选项式语法
+app.component('base-input', {
+  template: `
+    <input ref="input" />
+  `,
+  methods: {
+    focusInput() {
+      this.$refs.input.focus()
+    }
+  },
+  mounted() {
+    this.focusInput()
+  }
+})
+```
+
+ 这是在**组件里访问自己** `this.$refs.input`
+
+```html
+<base-input ref="usernameInput"></base-input>
+```
+
+这是在**父级组件用ref引用** ，该引用可以访问到在此子组件里定义暴露的方法和数据。
+
+#### setup的统一级语法
+
+setup语法将这俩整到一块 不过我觉得还是基于ref的数据也就是响应式引用的部分比重更大，实质可能更类似与把组件当作数据,即 `const temp=ref(模板)`
+
+不过这个模板参数怎么得到呢 不可能在js处写一遍吧 这样在模板端我们用这个attr也就是ref绑定暴露出的
+
+```js
+<template>
+	<div ref='root'>这是要被引用的模板</div>    
+</template>
+<script>
+        export default{
+			setup(){
+                const root=ref(null);
+                return{
+					root	
+                }
+                
+            }
+}
+</script>
+```
+
+这就是其核心语法 首先在setup时 把模板绑向暴露的root这个ref对象 之后在挂载`onMounted`后 我们可以看到 `root.value` 已经绑定上去了DOM 
+
+*这里我们在渲染上下文中暴露 `root`，并通过 `ref="root"`，将其绑定到 div 作为其 ref。在虚拟 DOM 补丁算法中，如果 VNode 的 `ref` 键对应于渲染上下文中的 ref，则 VNode 的相应元素或组件实例将被分配给该 ref 的值。这是在虚拟 DOM 挂载/打补丁过程中执行的，因此模板引用只会在初始渲染之后获得赋值。*--来自官网
+
+```vue
+<template>
+  <div ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, watchEffect } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      watchEffect(() => {
+        console.log(root.value) // => <div>This is a root element</div>
+      }, 
+      {
+        flush: 'post'
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+
+```
+
+这里为什么需要 `watchEffect` 增加一个参数选项呢 因为默认`watchEffect` 的行为
+
+——`watch()` 和 `watchEffect()` 在 DOM 挂载或更新*之前*运行副作用，所以当侦听器运行时，模板引用还未被更新。
+
+怎样改变这个行为在挂载之后调用呢，flush 流出抽水的意思，虽然我也不知道什么关系啊哈哈，但是post有介词在.....之后的意思，这个参数选项就是改变默认行为在挂载之后运行副作用，被调用。这里可以用`onMounted`等钩子替代。
