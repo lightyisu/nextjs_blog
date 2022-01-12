@@ -185,3 +185,6 @@ console.log(proxy.meal)
 （换新值）
 
 因为完全没看过vue的源码，猜测的抽象模型应该是这样，挺像多米诺骨牌啊哈哈，纯连锁反应。
+
+**track实际上就是订阅的动作，响应式的更新trigger就是发布的意思，响应式的过程就是向所有订阅者发布新值的过程。**这个过程在Vue3是`proxy`实现，而2.6是`Object.defineProperties`实现的
+
