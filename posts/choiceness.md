@@ -94,3 +94,94 @@ f2(); //输出100
 原理：js的运行机制时**解释+执行** 解释时就已经确定了作用域！！！！！
 
 执行时自然按照解释后的作用域来执行（this的指向是执行时确定的，而作用域访问的变量是编写代码的结构确定的）
+
+### Proxy与this
+
+proxy与this有这奇妙关系 为啥这么说呢 因为proxy代理后的对象运行this与源对象运行时的this并不相同
+
+这会造成一些问题 比如原生隐藏的内部属性需要用到this 而 通过代理这层访问不到真this也就是源对象 代理后this也成为了proxy
+
+**有些原生对象的内部属性，只有通过正确的`this`才能拿到，所以 Proxy 也无法代理这些原生对象的属性。**
+
+代理前：obj的this  =>obj
+
+代理后：proxy的this =>proxy   
+
+> 一个原生Date对象的代理
+
+```js
+const d1=new Date()
+const p1=new Proxy(d1,{})
+p1.getDate(); // TypeError: this is not a Date object.
+```
+
+```js
+const target = new Date();
+const handler = {
+  get(target, prop) {
+    if (prop === 'getDate') {
+      return target.getDate.bind(target);
+    }
+    return Reflect.get(target, prop);
+  }
+};
+const proxy = new Proxy(target, handler);
+
+proxy.getDate() // get到的
+```
+
+我们需要自己**手动绑定真对象**才能拿到内部函数属性
+
+**Reflect**实际作用是一个**基础的默认操作**，通过基础操作Reflect叠加我们可以在默认操作做一点副作用 也就是在trap函数加点东西+一个返回Reflect的默认操作就是我们完整所要写的代理逻辑了，不过不用默认操作也是可以。
+
+### Vue响应式
+
+Vue3.0的响应式我认为更像是一个**连锁反应** ，一个带动另一个 ，一个值的变化带动依赖该值的另一个值变化，从而形成响应式。原理基于ES6推出的Proxy代理，就是给默认行为添加副作用，这些副作用是实现连锁反应的逻辑操作。可能是以前学过的发布订阅模型实现~ 现在印象不是很深。
+
+
+
+来自VUE文档
+
+>1. **当一个值被读取时进行追踪**：proxy 的 `get` 处理函数中 `track` 函数记录了该 property 和当前副作用。
+>2. **当某个值改变时进行检测**：在 proxy 上调用 `set` 处理函数。
+>3. **重新运行代码来读取原始值**：`trigger` 函数查找哪些副作用依赖于该 property 并执行它们。
+
+```js
+const dinner = {
+  meal: 'tacos'
+}
+
+const handler = {
+  get(target, property, receiver) {
+    track(target, property)
+    return Reflect.get(...arguments)
+  },
+  set(target, property, value, receiver) {
+    trigger(target, property)
+    return Reflect.set(...arguments)
+  }
+}
+
+const proxy = new Proxy(dinner, handler)
+console.log(proxy.meal)
+
+// tacos
+```
+
+用自己的话翻译一下:
+
+其中有两个trap函数  
+
+1.**(get)**当有地方读取这个响应式数据时，代理的hadler的get函数的副作用用`track`函数记录下这个值在哪里被用到，告诉声明Vue我这里用了这个响应式数据，到时候更新带我一个的意思。
+
+（记录位置）
+
+2.**(set)**当该响应式数据被改变时,trigger函数被触发,随即会寻找哪些需要使用这个响应式数据的地方。去找那些喊着更新带我一个的地方。
+
+（找位置）
+
+3.OK现在也找到它们的位置了，直接进行新值的更新。
+
+（换新值）
+
+因为完全没看过vue的源码，猜测的抽象模型应该是这样，挺像多米诺骨牌啊哈哈，纯连锁反应。
