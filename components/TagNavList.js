@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function TagNavList({ setTag ,filterTag}) {
     return (
-        <ul className='p-10 navBtn'>
+        <ul className='p-10 pb-2 navBtn'>
             <li className={filterTag=='all'?'bg-white':''} onClick={() => { setTag('all') }}>
                 <i className='bg-all-icon'></i>全部</li>
             <li className={filterTag=='react'?'bg-white':''} onClick={() => { setTag('react') }}> <i className='bg-react-icon'></i>React </li>

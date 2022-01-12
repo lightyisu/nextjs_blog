@@ -23,6 +23,7 @@ module.exports = {
         'node-icon':'url("/images/nodejs.png")',
         'list-icon':'url("/images/list.png")',
         'multiply-icon':'url("/images/multiply.svg")'
+        
       }),
       backgroundSize:{
         '90%':'90%',

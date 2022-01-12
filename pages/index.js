@@ -7,6 +7,7 @@ import NavBtn from '../components/Nav-btn'
 import TagNavList from '../components/TagNavList';
 import { useState } from 'react';
 import NavHead from '../components/NavHead';
+import JuejinIcon from '../components/svg-icon/juejin'
 const next = ({ sortedPostsData, buildTime }) => {
     let [filterTag, setTag] = useState('all');
     let coverColor=['#FFEE58','#FF6958','#656CFF','#8D77FF','#D799FF','#D688FF'];
@@ -24,6 +25,7 @@ const next = ({ sortedPostsData, buildTime }) => {
                 <div className='min-w-300 hidden sm:block mb-10'>
                     <TagNavList setTag={setTag} filterTag={filterTag} />
                     <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>
+                    <div className='px-16 font-bold'><a href='https://juejin.cn/user/4212984289430941'><JuejinIcon/></a></div>
                 </div>
 
                 <div className='flex sm:w-1/3 w-10/12 flex-wrap ' >
