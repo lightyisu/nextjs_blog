@@ -22,7 +22,7 @@ export default function Post({ postData }) {
       </article>
       <p className="font-bold italic text-right text-xl p-10">
         <span className=" text-red-500 text-4xl">.</span>Posted by time-lapse.tk{" "}
-        <i className="bg-logo inline-block bg-75% bg-no-repeat w-6 h-6"></i>
+        <i className="bg-logo_ inline-block bg-75% bg-no-repeat w-6 h-6"></i>
       </p>
     </Layout>
   );

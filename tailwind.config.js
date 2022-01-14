@@ -22,7 +22,8 @@ module.exports = {
         'vue-icon':'url("/images/vuejs.png")',
         'node-icon':'url("/images/nodejs.png")',
         'list-icon':'url("/images/list.png")',
-        'multiply-icon':'url("/images/multiply.svg")'
+        'multiply-icon':'url("/images/multiply.svg")',
+        'logo_':'url("/images/logo_.png")'
         
       }),
       backgroundSize:{
