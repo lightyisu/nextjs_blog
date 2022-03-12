@@ -3,7 +3,7 @@ import MoveBanner from "./moveBanner";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export default function NavHead() {
-  const [sentence, setSentence] = useState("22");
+  const [sentence, setSentence] = useState("加载中");
   useEffect(() => {
     console.log("xxxx1");
     axios
@@ -25,7 +25,7 @@ export default function NavHead() {
       </div>
       <p
         className="
-  mt-4 inline-block font-bold float-right text-sm p-0 justify-self-end "
+   inline-block sm:mt-4 float-right text-xs p-0 justify-self-end "
       >
         {sentence}
       </p>

@@ -21,7 +21,7 @@ const next = ({ sortedPostsData, buildTime }) => {
          
             <NavBtn setTag={setTag} filterTag={filterTag} />
 
-            <div className='flex justify-center pt-36  bg-gray-200'>
+            <div className='flex justify-center pt-28  bg-gray-200'>
                 <div className='min-w-300 hidden sm:block mb-10'>
                     <TagNavList setTag={setTag} filterTag={filterTag} />
                     <div className='px-16 font-bold'><a href='https://github.com/lightyisu/nextjs_blog'><i className='bg-github-icon icon'></i>Github</a></div>

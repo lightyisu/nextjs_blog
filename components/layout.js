@@ -18,7 +18,7 @@ export default function Layout({children,bgUrl}){
                 <meta name='twitter:card' content='summary_large_image'/>
             </Head>
             <NavHead/>
-            <div className='pt-24'>
+            <div className='pt-20'>
             <header className={styles.header}>
                 {
                    
