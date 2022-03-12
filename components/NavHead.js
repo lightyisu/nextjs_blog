@@ -1,21 +1,34 @@
-import Link from "next/link"
-import MoveBanner from "./moveBanner"
-export default function NavHead(){
-    return(
-        <header className='top-0 z-10 text-black p-4 border-solid border-b flex fixed w-full left-0 bg-white blur-sm content-center border-gray-300 '>
-        <Link href='/'>
-        <i className='bg-logo bg-90%  cursor-pointer inline-block w-11 bg-no-repeat h-3.4r p-2 sm:ml-10 ml-4 '></i>
+import Link from "next/link";
+import MoveBanner from "./moveBanner";
+import { useEffect, useState } from "react";
+import axios from "axios";
+export default function NavHead() {
+  const [sentence, setSentence] = useState("22");
+  useEffect(() => {
+    console.log("xxxx1");
+    axios
+      .get("https://open.saintic.com/api/sentence/shuqing.all.json")
+      .then((res) => {
+        console.log(res);
+        setSentence(res.data.data.sentence + "-《" + res.data.data.name + "》");
+      });
+  }, []);
+  return (
+    <header className="top-0 z-10 text-black p-3 border-solid border-b fixed w-full left-0 bg-white blur-sm content-center border-gray-300 ">
+      <div className="left inline-block">
+        <Link href="/">
+          <i className="bg-logo bg-90%  cursor-pointer inline-block w-10 bg-no-repeat h-3.4r  sm:ml-10 ml-4 "></i>
         </Link>
-        <i className="bg-multiply-icon inline-block w-8 h-8 m-2   bg-90%"/>
-        <MoveBanner/>
-        <div className='absolute right-7 top-7 flex content-end'>
-        
-        <label for="toggle">
-           
-            <input type="checkbox" id='toggle' />
-            <span className='toggle'></span>
-        </label>
-        </div>
+        <i className="bg-multiply-icon inline-block w-4 h-4 mb-6   bg-90%" />
+
+        <MoveBanner />
+      </div>
+      <p
+        className="
+  mt-4 inline-block font-bold float-right text-sm p-0 justify-self-end "
+      >
+        {sentence}
+      </p>
     </header>
-    )
+  );
 }

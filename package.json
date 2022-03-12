@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.19.0",
     "gray-matter": "^4.0.2",
